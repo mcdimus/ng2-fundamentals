@@ -4,9 +4,23 @@ import {Component} from "@angular/core";
     selector: 'nav-bar',
     templateUrl: 'app/nav/navbar.component.html',
     styles: [`
-        .nav.navbar-nav { font-size: 15px; }
-        #searchForm { margin-right: 100px; }
-        @media (max-width: 1200px) { #searchForm { display: none; } }
+      .nav.navbar-nav {
+        font-size: 15px;
+      }
+
+      #searchForm {
+        margin-right: 100px;
+      }
+
+      li > a.active {
+        color: orange !important;
+      }
+
+      @media (max-width: 1200px) {
+        #searchForm {
+          display: none;
+        }
+      }
     `]
 })
 export class NavBarComponent {
