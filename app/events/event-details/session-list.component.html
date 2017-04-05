@@ -1,5 +1,5 @@
-<div class="row" *ngFor="let session of sessions">
-  <div class="col-md-10">
+<div class="row" *ngFor="let session of visibleSessions">
+  <div class="col-md-12">
     <collapsible-well [title]="session.name">
       <div well-title>
         {{session.name}}
