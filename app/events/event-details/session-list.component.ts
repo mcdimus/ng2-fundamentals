@@ -22,7 +22,7 @@ export class SessionListComponent implements OnChanges {
 
   constructor(private auth: AuthService, private voterService: VoterService) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     if (this.sessions) {
       this.filterSessions(this.filterBy);
       this.sortBy === 'name' ? this.visibleSessions.sort(sortByNameAsc) : this.visibleSessions.sort(sortByVotesDesc);

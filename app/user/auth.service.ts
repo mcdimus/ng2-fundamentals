@@ -52,7 +52,7 @@ export class AuthService {
     return this.http.put(`/api/users/${this.currentUser.id}`, this.currentUser, options);
   }
 
-  logout() {
+  logout(): Observable<any> {
     this.currentUser = undefined;
 
     let headers = new Headers({'Content-Type': 'application/json'});
