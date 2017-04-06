@@ -1,29 +1,36 @@
-import {Component} from "@angular/core";
-import {AuthService} from "./auth.service";
-import {Router} from "@angular/router";
+import {Component} from '@angular/core';
+import {AuthService} from './auth.service';
+import {Router} from '@angular/router';
 
 @Component({
-    templateUrl: 'app/user/login.component.html',
-    styles: [`
-      em {
-        float: right;
-        color: red;
-        padding-left: 10px;
-      }
-    `]
+  templateUrl: 'app/user/login.component.html',
+  styles: [`
+    em {
+      float: right;
+      color: red;
+      padding-left: 10px;
+    }
+  `]
 })
 export class LoginComponent {
 
-    constructor(private authService: AuthService, private router: Router) {
-    }
+  loginInvalid: boolean = false;
 
-    login(formValues): void {
-        this.authService.loginUser(formValues.userName, formValues.password);
-        this.router.navigate(['events']);
-    }
+  constructor(private authService: AuthService, private router: Router) {}
 
-    cancel(): void {
+  login(formValues): void {
+    this.authService.loginUser(formValues.userName, formValues.password).subscribe(response => {
+      if (!response) {
+        this.loginInvalid = true;
+      } else {
+        this.loginInvalid = false;
         this.router.navigate(['events']);
-    }
+      }
+    });
+  }
+
+  cancel(): void {
+    this.router.navigate(['events']);
+  }
 
 }
